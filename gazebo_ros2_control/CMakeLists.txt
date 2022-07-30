@@ -24,6 +24,11 @@ link_directories(
   ${gazebo_dev_LIBRARY_DIRS}
 )
 
+add_library(system_block SHARED src/system_block.cpp)
+ament_target_dependencies(system_block
+  ament_cmake
+)
+
 # Libraries
 add_library(${PROJECT_NAME} SHARED
   src/gazebo_ros2_control_plugin.cpp
@@ -48,10 +53,12 @@ ament_target_dependencies(gazebo_hardware_plugins
   hardware_interface
   rclcpp
 )
+target_link_libraries(gazebo_hardware_plugins system_block)
 
 ## Install
 install(TARGETS
   ${PROJECT_NAME}
+  system_block
   gazebo_hardware_plugins
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
@@ -65,6 +72,7 @@ ament_export_include_directories(
 ament_export_dependencies(ament_cmake)
 ament_export_dependencies(rclcpp)
 ament_export_libraries(
+  system_block
   ${PROJECT_NAME}
   gazebo_hardware_plugins
 )
