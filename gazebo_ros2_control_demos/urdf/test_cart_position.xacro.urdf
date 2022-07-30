@@ -53,9 +53,17 @@
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
     </hardware>
     <joint name="slider_to_cart">
+      <!-- Use a TF discretized with sampling period = Gazebo timestep -->
+      <param name="num">4.99916635e-07 4.99833323e-07</param>
+      <param name="den">1.0 -1.99949913 0.99950012</param>
+      <param name="predict_vel">true</param>
       <command_interface name="position">
         <param name="min">-15</param>
         <param name="max">15</param>
+      </command_interface>
+      <command_interface name="velocity">
+        <param name="min">-30</param>
+        <param name="max">30</param>
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
