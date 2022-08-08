@@ -57,6 +57,10 @@
         <param name="min">-15</param>
         <param name="max">15</param>
       </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1000</param>
+        <param name="max">1000</param>
+      </command_interface>
       <state_interface name="position">
         <param name="initial_value">1.0</param>
       </state_interface>

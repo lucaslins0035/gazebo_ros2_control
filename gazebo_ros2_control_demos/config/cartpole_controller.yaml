@@ -14,7 +14,7 @@ joint_trajectory_controller:
       - slider_to_cart
     interface_name: position
     command_interfaces:
-      - position
+      - effort
     state_interfaces:
       - position
       - velocity
